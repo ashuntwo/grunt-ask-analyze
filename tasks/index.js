@@ -11,13 +11,13 @@ if(!module.parent) {
 
 module.exports = function(grunt) {
 	grunt.registerMultiTask('ask_validate', 'Validate ASK interaction model.', function() {
-		var options = this.options({
-			schema: 'intents.json',
-			utterances: 'samples.txt'
-		});
+		console.dir(grunt.config.get());
 
-		var schema = grunt.file.read(options.schema).toString();
-		var utterances = grunt.file.read(options.utterances).toString();
+		var schemaFile = grunt.config.get('ask_validate.' + this.target + '.schema') || 'intents.json';
+		var utterancesFile = grunt.config.get('ask_validate.' + this.target + '.utterances') || 'samples.txt';
+
+		var schema = grunt.file.read(schemaFile).toString();
+		var utterances = grunt.file.read(utterancesFile).toString();
 
 		analyzer.analyze(schema, utterances);
 	});

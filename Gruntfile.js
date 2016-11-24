@@ -4,15 +4,9 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     ask_validate: {
-      interactionModel: {
-        options: {
-          bucket: 'magicdoor-ops.huntwork.net',
-          access: 'private'
-        },
-        files: [
-          { dest: 'model/samples.txt', src: ['model/samples.txt']},
-          { dest: 'model/intents.json', src: ['dist/intents.json']}
-        ]
+      default: {
+        schema: 'model/intents.json',
+        utterances: 'model/samples.txt'
       }
     }
   });

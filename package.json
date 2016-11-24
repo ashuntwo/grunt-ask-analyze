@@ -1,6 +1,6 @@
 {
   "name": "grunt-ask-analyze",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "grunt-ask-analyze analyzes an Alexa Skills Kit interaction model for validity.",
   "main": "index.js",
   "scripts": {
