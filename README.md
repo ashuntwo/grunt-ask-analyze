@@ -9,19 +9,24 @@ A grunt task that validates an Alexa Skills Kit interaction model. It currently 
 # Using it
 
 First, load it in your Gruntfile:
+
 <code>grunt.loadNpmTasks('grunt-ask-analyze');</code>
 
 Next, configure it:
+
 <code>
+<pre>
     ask_validate: {
       default: {
         schema: 'dist/intents.json',
         utterances: 'model/samples.txt'
       }
     }
+</pre>
 </code>
 
 Finally, use it as part of some other task, like your default task:
+
 <code>
   grunt.registerTask('default', ['ask_validate']);
 </code>
