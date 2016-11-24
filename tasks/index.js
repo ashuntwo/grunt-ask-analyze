@@ -11,8 +11,6 @@ if(!module.parent) {
 
 module.exports = function(grunt) {
 	grunt.registerMultiTask('ask_validate', 'Validate ASK interaction model.', function() {
-		console.dir(grunt.config.get());
-
 		var schemaFile = grunt.config.get('ask_validate.' + this.target + '.schema') || 'intents.json';
 		var utterancesFile = grunt.config.get('ask_validate.' + this.target + '.utterances') || 'samples.txt';
 

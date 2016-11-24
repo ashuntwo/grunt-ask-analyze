@@ -8,4 +8,20 @@ A grunt task that validates an Alexa Skills Kit interaction model. It currently 
 
 # Using it
 
-<code>require('alexa-debug-mode').slotTypes</code>
+First, load it in your Gruntfile:
+<code>grunt.loadNpmTasks('grunt-ask-analyze');</code>
+
+Next, configure it:
+<code>
+    ask_validate: {
+      default: {
+        schema: 'dist/intents.json',
+        utterances: 'model/samples.txt'
+      }
+    }
+</code>
+
+Finally, use it as part of some other task, like your default task:
+<code>
+  grunt.registerTask('default', ['ask_validate']);
+</code>
