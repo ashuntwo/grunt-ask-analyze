@@ -1,16 +1,6 @@
-var fs = require('fs');
-
-if(!module.parent) {
-	var argv = require('minimist')(process.argv.slice(2));
-	var intentFile = argv.intents;
-	var sampleFile = argv.samples;
-
-	analyze(intentFile, sampleFile);
-}
-
-function analyze(intentFile, sampleFile) {
-	var intents = JSON.parse(fs.readFileSync(intentFile, "utf8"));
-	var samples = fs.readFileSync(sampleFile, "utf8").split('\n');
+function analyze(intentString, samplesString) {
+	var intents = JSON.parse(intentString);
+	var samples = samplesString.split('\n');
 
 	var intentCounts = intents.intents.map(function(intent) { return intent.intent; }).reduce(function(left, right) {
 		left[right] = 0;
@@ -76,7 +66,6 @@ function analyze(intentFile, sampleFile) {
 		throw new Error("there are repeated samples: " + repeatedSamples);
 	if(intentsMissingSamples.length > 0)
 		throw new Error("some intents are missing samples: " + JSON.stringify(intentsMissingSamples));
-
 }
 
 exports.analyze = analyze;
