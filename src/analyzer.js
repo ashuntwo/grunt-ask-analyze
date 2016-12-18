@@ -3,6 +3,9 @@ function analyze(intentString, samplesString) {
 	var samples = samplesString.split('\n');
 
 	var intentCounts = intents.intents.map(function(intent) { return intent.intent; }).reduce(function(left, right) {
+		if(left[right] === 0)
+			throw new Error("duplicate definition of " + right);
+
 		left[right] = 0;
 		return left;
 	}, {});
@@ -15,6 +18,9 @@ function analyze(intentString, samplesString) {
 		var parts = sample.split('\t');
 		intent = parts[0];
 		phrase = parts[1];
+
+		if(parts.length != 2 || parts[0].length < 1 || parts[1].length < 1)
+			throw new Error("invalid sample utterance " + sample);
 		
 		var count = intentCounts[intent];
 
